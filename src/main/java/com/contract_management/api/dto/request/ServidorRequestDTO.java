@@ -20,7 +20,7 @@ public class ServidorRequestDTO {
     private String email;
 
     @NotNull(message = "CPF é obrigatório")
-    private Long cpf;
+    private String cpf;
 
     @NotBlank(message = "Telefone é obrigatório")
     private String telefone;

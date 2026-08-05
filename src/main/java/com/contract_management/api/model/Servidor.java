@@ -29,8 +29,8 @@ public class Servidor {
     @Column(name = "nome", length = 200, nullable = false)
     private String nome;
 
-    @Column(name = "cpf", nullable = false)
-    private Long cpf;
+    @Column(name = "cpf", nullable = false, length = 11)
+    private String cpf;
 
     @Column(name = "cargo", length = 50, nullable = false)
     private String cargo;
