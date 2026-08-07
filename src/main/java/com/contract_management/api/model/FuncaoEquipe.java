@@ -26,9 +26,6 @@ public class FuncaoEquipe {
     @Column(name = "nome", length = 50, nullable = false)
     private String nome;
 
-    @Column(name = "descricao", length = 200, nullable = false)
-    private String descricao;
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "ativo_id", nullable = false)
     private Ativo ativo;

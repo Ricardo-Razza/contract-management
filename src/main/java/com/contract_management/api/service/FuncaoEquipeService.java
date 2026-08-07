@@ -39,7 +39,6 @@ public class FuncaoEquipeService {
         FuncaoEquipeResponseDTO dto = new FuncaoEquipeResponseDTO();
         dto.setId(funcao.getId());
         dto.setNome(funcao.getNome());
-        dto.setDescricao(funcao.getDescricao());
         dto.setSituacao(funcao.getAtivo().getSituacao());
         return dto;
     }
