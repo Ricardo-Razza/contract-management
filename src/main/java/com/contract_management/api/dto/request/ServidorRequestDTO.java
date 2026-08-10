@@ -19,9 +19,6 @@ public class ServidorRequestDTO {
     @NotBlank(message = "Email é obrigatório")
     private String email;
 
-    @NotNull(message = "CPF é obrigatório")
-    private String cpf;
-
     @NotBlank(message = "Telefone é obrigatório")
     private String telefone;
 

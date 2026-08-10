@@ -9,7 +9,6 @@ import java.util.Optional;
 
 @Repository
 public interface ServidorRepository extends JpaRepository<Servidor, Long> {
-    Optional<Servidor> findByCpf(String cpf);
     List<Servidor> findBySecretariaId(Long secretariaId);
     List<Servidor> findByAtivoId(Long ativoId);
 }

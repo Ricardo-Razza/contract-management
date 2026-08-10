@@ -37,12 +37,6 @@ public class EquipeContrato {
     @JoinColumn(name = "funcao_id", nullable = false)
     private FuncaoEquipe funcao;
 
-    @Column(name = "data_designacao", nullable = false)
-    private LocalDate dataDesignacao;
-
-    @Column(name = "data_fim")
-    private LocalDate dataFim;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ativo_id", nullable = false)
     private Ativo ativo;

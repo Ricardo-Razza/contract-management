@@ -17,11 +17,6 @@ public class EquipeContratoRequestDTO {
     @NotNull(message = "Função é obrigatória")
     private Long funcaoId;
 
-    @NotNull(message = "Data de designação é obrigatória")
-    private LocalDate dataDesignacao;
-
-    private LocalDate dataFim;
-
     @NotNull(message = "Status é obrigatório")
     private Long ativoId;
 }

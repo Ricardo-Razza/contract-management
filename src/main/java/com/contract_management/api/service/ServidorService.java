@@ -47,10 +47,6 @@ public class ServidorService {
     public ServidorResponseDTO criar(ServidorRequestDTO dto) {
         log.info("Criando novo servidor: {}", dto.getNome());
 
-        if (servidorRepository.findByCpf(dto.getCpf()).isPresent()) {
-            throw new BusinessException("CPF " + dto.getCpf() + " já está cadastrado");
-        }
-
         Secretaria secretaria = secretariaRepository.findById(dto.getSecretariaId())
                 .orElseThrow(() -> new EntityNotFoundException("Secretaria", dto.getSecretariaId()));
 
@@ -59,7 +55,6 @@ public class ServidorService {
 
         Servidor servidor = Servidor.builder()
                 .nome(dto.getNome())
-                .cpf(dto.getCpf())
                 .cargo(dto.getCargo())
                 .matricula(dto.getMatricula())
                 .email(dto.getEmail())
@@ -81,11 +76,6 @@ public class ServidorService {
         Servidor servidor = servidorRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Servidor", id));
 
-        if (!servidor.getCpf().equals(dto.getCpf())) {
-            if (servidorRepository.findByCpf(dto.getCpf()).isPresent()) {
-                throw new BusinessException("CPF " + dto.getCpf() + " já está cadastrado");
-            }
-        }
 
         Secretaria secretaria = secretariaRepository.findById(dto.getSecretariaId())
                 .orElseThrow(() -> new EntityNotFoundException("Secretaria", dto.getSecretariaId()));
@@ -94,7 +84,6 @@ public class ServidorService {
                 .orElseThrow(() -> new EntityNotFoundException("Ativo", dto.getAtivoId()));
 
         servidor.setNome(dto.getNome());
-        servidor.setCpf(dto.getCpf());
         servidor.setCargo(dto.getCargo());
         servidor.setMatricula(dto.getMatricula());
         servidor.setEmail(dto.getEmail());
@@ -124,7 +113,6 @@ public class ServidorService {
         ServidorResponseDTO dto = new ServidorResponseDTO();
         dto.setId(servidor.getId());
         dto.setNome(servidor.getNome());
-        dto.setCpf(servidor.getCpf());
         dto.setCargo(servidor.getCargo());
         dto.setMatricula(servidor.getMatricula());
         dto.setEmail(servidor.getEmail());
