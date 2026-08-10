@@ -61,16 +61,10 @@ public class EquipeContratoService {
         Ativo ativo = ativoRepository.findById(dto.getAtivoId())
                 .orElseThrow(() -> new EntityNotFoundException("Ativo", dto.getAtivoId()));
 
-        if (dto.getDataFim() != null && dto.getDataFim().isBefore(dto.getDataDesignacao())) {
-            throw new BusinessException("Data fim não pode ser anterior à data de designação");
-        }
-
         EquipeContrato equipe = EquipeContrato.builder()
                 .ata(ata)
                 .servidor(servidor)
                 .funcao(funcao)
-                .dataDesignacao(dto.getDataDesignacao())
-                .dataFim(dto.getDataFim())
                 .ativo(ativo)
                 .build();
 
@@ -95,8 +89,6 @@ public class EquipeContratoService {
         dto.setAta(equipe.getAta().getNumero() + "/" + equipe.getAta().getAno());
         dto.setServidor(equipe.getServidor().getNome());
         dto.setFuncao(equipe.getFuncao().getNome());
-        dto.setDataDesignacao(equipe.getDataDesignacao());
-        dto.setDataFim(equipe.getDataFim());
         dto.setSituacao(equipe.getAtivo().getSituacao());
 
         return dto;

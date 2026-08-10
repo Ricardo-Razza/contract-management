@@ -10,7 +10,6 @@ public class ServidorResponseDTO {
     private String cargo;
     private Integer matricula;
     private String email;
-    private String cpf;
     private String telefone;
     private String secretaria;
     private String situacao;

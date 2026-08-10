@@ -40,4 +40,5 @@ public class AtaSecretaria {
     @UpdateTimestamp
     @Column(name = "atualizado_em")
     private LocalDateTime atualizadoEm;
+
 }

@@ -34,4 +34,10 @@ public class AtaRequestDTO {
     private Long ativoId;
 
     private List<Long> secretariasIds;
+
+    private String observacao;
+
+    private String portariaDesignacao;
+
+    private LocalDate dataDesignacao;
 }

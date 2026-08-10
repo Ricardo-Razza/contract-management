@@ -62,4 +62,13 @@ public class AtaRegistroPreco {
     @OneToMany(mappedBy = "ata", cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default
     private List<EquipeContrato> equipe = new ArrayList<>();
+
+    @Column(name = "observacao")
+    private String observacao;
+
+    @Column(name = "portaria_designacao", length = 100)
+    private String portariaDesignacao;
+
+    @Column(name = "data_designacao")
+    private LocalDate dataDesignacao;
 }
