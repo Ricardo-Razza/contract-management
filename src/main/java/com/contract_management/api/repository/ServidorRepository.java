@@ -11,4 +11,5 @@ import java.util.Optional;
 public interface ServidorRepository extends JpaRepository<Servidor, Long> {
     List<Servidor> findBySecretariaId(Long secretariaId);
     List<Servidor> findByAtivoId(Long ativoId);
+    List<Servidor> findAllByNomeIgnoreCase(String nome);
 }

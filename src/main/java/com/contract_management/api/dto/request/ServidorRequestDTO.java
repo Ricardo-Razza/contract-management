@@ -22,9 +22,6 @@ public class ServidorRequestDTO {
     @NotBlank(message = "Telefone é obrigatório")
     private String telefone;
 
-    @NotNull(message = "Secretaria é obrigatória")
-    private Long secretariaId;
-
     @NotNull(message = "Status é obrigatório")
     private Long ativoId;
 }

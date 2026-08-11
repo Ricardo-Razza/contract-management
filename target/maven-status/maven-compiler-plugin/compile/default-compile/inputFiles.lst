@@ -1,5 +1,6 @@
 C:\Users\ricardorn\Desktop\projetos\contract-management\src\main\java\com\contract_management\api\ApiApplication.java
 C:\Users\ricardorn\Desktop\projetos\contract-management\src\main\java\com\contract_management\api\config\CorsConfig.java
+C:\Users\ricardorn\Desktop\projetos\contract-management\src\main\java\com\contract_management\api\controller\ArpImportController.java
 C:\Users\ricardorn\Desktop\projetos\contract-management\src\main\java\com\contract_management\api\controller\AtaController.java
 C:\Users\ricardorn\Desktop\projetos\contract-management\src\main\java\com\contract_management\api\controller\AtivoController.java
 C:\Users\ricardorn\Desktop\projetos\contract-management\src\main\java\com\contract_management\api\controller\EquipeContratoController.java
@@ -7,8 +8,10 @@ C:\Users\ricardorn\Desktop\projetos\contract-management\src\main\java\com\contra
 C:\Users\ricardorn\Desktop\projetos\contract-management\src\main\java\com\contract_management\api\controller\SecretariaController.java
 C:\Users\ricardorn\Desktop\projetos\contract-management\src\main\java\com\contract_management\api\controller\ServidorController.java
 C:\Users\ricardorn\Desktop\projetos\contract-management\src\main\java\com\contract_management\api\controller\TipoController.java
+C:\Users\ricardorn\Desktop\projetos\contract-management\src\main\java\com\contract_management\api\dto\request\ArpImportRequestDTO.java
 C:\Users\ricardorn\Desktop\projetos\contract-management\src\main\java\com\contract_management\api\dto\request\AtaRequestDTO.java
 C:\Users\ricardorn\Desktop\projetos\contract-management\src\main\java\com\contract_management\api\dto\request\EquipeContratoRequestDTO.java
+C:\Users\ricardorn\Desktop\projetos\contract-management\src\main\java\com\contract_management\api\dto\request\GestorFiscalDTO.java
 C:\Users\ricardorn\Desktop\projetos\contract-management\src\main\java\com\contract_management\api\dto\request\SecretariaRequestDTO.java
 C:\Users\ricardorn\Desktop\projetos\contract-management\src\main\java\com\contract_management\api\dto\request\ServidorRequestDTO.java
 C:\Users\ricardorn\Desktop\projetos\contract-management\src\main\java\com\contract_management\api\dto\response\AtaResponseDTO.java
@@ -35,6 +38,8 @@ C:\Users\ricardorn\Desktop\projetos\contract-management\src\main\java\com\contra
 C:\Users\ricardorn\Desktop\projetos\contract-management\src\main\java\com\contract_management\api\repository\SecretariaRepository.java
 C:\Users\ricardorn\Desktop\projetos\contract-management\src\main\java\com\contract_management\api\repository\ServidorRepository.java
 C:\Users\ricardorn\Desktop\projetos\contract-management\src\main\java\com\contract_management\api\repository\TipoRepository.java
+C:\Users\ricardorn\Desktop\projetos\contract-management\src\main\java\com\contract_management\api\service\ArpImportPersistenceService.java
+C:\Users\ricardorn\Desktop\projetos\contract-management\src\main\java\com\contract_management\api\service\ArpOdsImportService.java
 C:\Users\ricardorn\Desktop\projetos\contract-management\src\main\java\com\contract_management\api\service\AtaService.java
 C:\Users\ricardorn\Desktop\projetos\contract-management\src\main\java\com\contract_management\api\service\AtivoService.java
 C:\Users\ricardorn\Desktop\projetos\contract-management\src\main\java\com\contract_management\api\service\EquipeContratoService.java

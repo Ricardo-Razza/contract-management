@@ -10,5 +10,6 @@ import java.util.List;
 public interface AtaSecretariaRepository extends JpaRepository<AtaSecretaria, Long> {
     List<AtaSecretaria> findByAtaId(Long ataId);
     List<AtaSecretaria> findBySecretariaId(Long secretariaId);
+    boolean existsByAtaIdAndSecretariaId(Long ataId, Long secretariaId);
     void deleteByAtaId(Long ataId);
 }

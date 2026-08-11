@@ -33,7 +33,7 @@ public class AtaRegistroPreco {
     @Column(name = "data_inicio", nullable = false)
     private LocalDate dataInicio;
 
-    @Column(name = "data_fim")
+    @Column(name = "data_fim", nullable = true)
     private LocalDate dataFim;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -69,6 +69,6 @@ public class AtaRegistroPreco {
     @Column(name = "portaria_designacao", length = 100)
     private String portariaDesignacao;
 
-    @Column(name = "data_designacao")
+    @Column(name = "data_designacao", nullable = true)
     private LocalDate dataDesignacao;
 }

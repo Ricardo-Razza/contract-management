@@ -47,8 +47,6 @@ public class ServidorService {
     public ServidorResponseDTO criar(ServidorRequestDTO dto) {
         log.info("Criando novo servidor: {}", dto.getNome());
 
-        Secretaria secretaria = secretariaRepository.findById(dto.getSecretariaId())
-                .orElseThrow(() -> new EntityNotFoundException("Secretaria", dto.getSecretariaId()));
 
         Ativo ativo = ativoRepository.findById(dto.getAtivoId())
                 .orElseThrow(() -> new EntityNotFoundException("Ativo", dto.getAtivoId()));
@@ -59,7 +57,6 @@ public class ServidorService {
                 .matricula(dto.getMatricula())
                 .email(dto.getEmail())
                 .telefone(dto.getTelefone())
-                .secretaria(secretaria)
                 .ativo(ativo)
                 .build();
 
@@ -77,9 +74,6 @@ public class ServidorService {
                 .orElseThrow(() -> new EntityNotFoundException("Servidor", id));
 
 
-        Secretaria secretaria = secretariaRepository.findById(dto.getSecretariaId())
-                .orElseThrow(() -> new EntityNotFoundException("Secretaria", dto.getSecretariaId()));
-
         Ativo ativo = ativoRepository.findById(dto.getAtivoId())
                 .orElseThrow(() -> new EntityNotFoundException("Ativo", dto.getAtivoId()));
 
@@ -88,7 +82,6 @@ public class ServidorService {
         servidor.setMatricula(dto.getMatricula());
         servidor.setEmail(dto.getEmail());
         servidor.setTelefone(dto.getTelefone());
-        servidor.setSecretaria(secretaria);
         servidor.setAtivo(ativo);
 
         Servidor updated = servidorRepository.save(servidor);
@@ -117,7 +110,6 @@ public class ServidorService {
         dto.setMatricula(servidor.getMatricula());
         dto.setEmail(servidor.getEmail());
         dto.setTelefone(servidor.getTelefone());
-        dto.setSecretaria(servidor.getSecretaria().getNome());
         dto.setSituacao(servidor.getAtivo().getSituacao());
         return dto;
     }

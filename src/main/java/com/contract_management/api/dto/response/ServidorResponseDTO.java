@@ -11,6 +11,5 @@ public class ServidorResponseDTO {
     private Integer matricula;
     private String email;
     private String telefone;
-    private String secretaria;
     private String situacao;
 }

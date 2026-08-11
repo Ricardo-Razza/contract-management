@@ -42,10 +42,6 @@ public class Servidor {
     private String telefone;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "secretaria_id", nullable = false)
-    private Secretaria secretaria;
-
-    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ativo_id", nullable = false)
     private Ativo ativo;
 

@@ -108,7 +108,69 @@ public class AtaService {
         return toResponseDTO(saved);
     }
 
+    @Transactional
+    public AtaResponseDTO atualizar(Long id, AtaRequestDTO dto) {
+        // 1. Buscar a ata existente
+        AtaRegistroPreco ata = ataRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("ATA", id));
 
+        // 2. Validar duplicidade
+        if (!ata.getNumero().equals(dto.getNumero()) || !ata.getAno().equals(dto.getAno())) {
+            if (ataRepository.findByNumeroAndAno(dto.getNumero(), dto.getAno()).isPresent()) {
+                throw new BusinessException("ATA " + dto.getNumero() + "/" + dto.getAno() + " já existe");
+            }
+        }
+
+        // 3. Validar datas
+        if (dto.getDataFim() != null && dto.getDataFim().isBefore(dto.getDataInicio())) {
+            throw new BusinessException("Data fim não pode ser anterior à data início");
+        }
+
+        // 4. Buscar dependências
+        Tipo tipo = tipoRepository.findById(dto.getTipoId())
+                .orElseThrow(() -> new EntityNotFoundException("Tipo", dto.getTipoId()));
+
+        Ativo ativo = ativoRepository.findById(dto.getAtivoId())
+                .orElseThrow(() -> new EntityNotFoundException("Ativo", dto.getAtivoId()));
+
+        // 5. Atualizar dados
+        ata.setNumero(dto.getNumero());
+        ata.setAno(dto.getAno());
+        ata.setDataInicio(dto.getDataInicio());
+        ata.setDataFim(dto.getDataFim());
+        ata.setTipo(tipo);
+        ata.setObjeto(dto.getObjeto());
+        ata.setObservacao(dto.getObservacao());
+        ata.setPortariaDesignacao(dto.getPortariaDesignacao());
+        ata.setDataDesignacao(dto.getDataDesignacao());
+        ata.setAtivo(ativo);
+
+        // 6. ATUALIZAR SECRETARIAS - REMOVER ANTIGAS
+        List<AtaSecretaria> antigas = ataSecretariaRepository.findByAtaId(id);
+        if (!antigas.isEmpty()) {
+            ataSecretariaRepository.deleteAll(antigas);
+            ataSecretariaRepository.flush();  // Força a execução imediata
+        }
+
+        // 7. ADICIONAR NOVAS SECRETARIAS
+        if (dto.getSecretariasIds() != null && !dto.getSecretariasIds().isEmpty()) {
+            for (Long secretariaId : dto.getSecretariasIds()) {
+                Secretaria secretaria = secretariaRepository.findById(secretariaId)
+                        .orElseThrow(() -> new EntityNotFoundException("Secretaria", secretariaId));
+
+                AtaSecretaria ataSecretaria = AtaSecretaria.builder()
+                        .ata(ata)
+                        .secretaria(secretaria)
+                        .ativo(ativo)
+                        .build();
+
+                ataSecretariaRepository.save(ataSecretaria);
+            }
+        }
+
+        log.info("ATA atualizada com sucesso. ID: {}, Número: {}/{}", ata.getId(), ata.getNumero(), ata.getAno());
+        return toResponseDTO(ata);
+    }
     @Transactional
     public void deletar(Long id) {
         if (!ataRepository.existsById(id)) {

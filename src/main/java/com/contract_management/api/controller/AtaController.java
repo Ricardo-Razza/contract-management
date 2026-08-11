@@ -38,4 +38,9 @@ public class AtaController {
         ataService.deletar(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<AtaResponseDTO> atualizar(@PathVariable Long id, @RequestBody AtaRequestDTO dto) {
+        return ResponseEntity.ok(ataService.atualizar(id, dto));
+    }
 }
