@@ -44,9 +44,6 @@ public class Secretaria {
     @Column(name = "atualizado_em")
     private LocalDateTime atualizadoEm;
 
-    @OneToMany(mappedBy = "secretaria")
-    @Builder.Default
-    private List<Servidor> servidores = new ArrayList<>();
 
     @OneToMany(mappedBy = "secretaria")
     @Builder.Default
