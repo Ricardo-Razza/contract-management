@@ -20,7 +20,7 @@ public class EquipeContratoController {
 
     @GetMapping
     public ResponseEntity<List<EquipeContratoResponseDTO>> listarTodos() {
-        return ResponseEntity.ok(equipeContratoService.listarTodos());
+        return ResponseEntity.ok(equipeContratoService.buscarTodas());
     }
 
     @GetMapping("/{id}")
@@ -29,8 +29,14 @@ public class EquipeContratoController {
     }
 
     @PostMapping
-    public ResponseEntity<EquipeContratoResponseDTO> criar(@Valid @RequestBody EquipeContratoRequestDTO dto) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(equipeContratoService.criar(dto));
+    public ResponseEntity<EquipeContratoResponseDTO> criar(@Valid @RequestBody EquipeContratoRequestDTO requestDTO) {
+        EquipeContratoResponseDTO criada = equipeContratoService.salvar(requestDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(criada);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<EquipeContratoResponseDTO> atualizar(@PathVariable Long id, @Valid @RequestBody EquipeContratoRequestDTO requestDTO) {
+        return ResponseEntity.ok(equipeContratoService.atualizar(id, requestDTO));
     }
 
     @DeleteMapping("/{id}")

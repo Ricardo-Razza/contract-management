@@ -1,22 +1,24 @@
 package com.contract_management.api.dto.request;
 
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
+import lombok.*;
 
-import java.time.LocalDate;
+import java.util.List;
 
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class EquipeContratoRequestDTO {
 
-    @NotNull(message = "ATA é obrigatória")
+    @NotNull(message = "A Ata é obrigatória")
     private Long ataId;
 
-    @NotNull(message = "Servidor é obrigatório")
-    private Long servidorId;
-
-    @NotNull(message = "Função é obrigatória")
-    private Long funcaoId;
-
-    @NotNull(message = "Status é obrigatório")
+    @NotNull(message = "O status de ativo é obrigatório")
     private Long ativoId;
+
+    @NotEmpty(message = "A equipe deve ter ao menos um membro designado")
+    private List<MembroEquipeRequestDTO> membros;
 }
