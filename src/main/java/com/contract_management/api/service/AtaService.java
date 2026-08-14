@@ -3,15 +3,11 @@ package com.contract_management.api.service;
 import com.contract_management.api.dto.request.AtaRequestDTO;
 import com.contract_management.api.dto.response.AtaResponseDTO;
 import com.contract_management.api.dto.response.EquipeContratoResponseDTO;
+import com.contract_management.api.dto.response.MembroEquipeResponseDTO;
 import com.contract_management.api.dto.response.SecretariaResponseDTO;
 import com.contract_management.api.exception.BusinessException;
 import com.contract_management.api.exception.EntityNotFoundException;
-import com.contract_management.api.model.AtaRegistroPreco;
-import com.contract_management.api.model.AtaSecretaria;
-import com.contract_management.api.model.Ativo;
-import com.contract_management.api.model.EquipeContrato;
-import com.contract_management.api.model.Secretaria;
-import com.contract_management.api.model.Tipo;
+import com.contract_management.api.model.*;
 import com.contract_management.api.repository.AtaRepository;
 import com.contract_management.api.repository.AtaSecretariaRepository;
 import com.contract_management.api.repository.AtivoRepository;
@@ -22,7 +18,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -169,8 +164,9 @@ public class AtaService {
         }
 
         log.info("ATA atualizada com sucesso. ID: {}, Número: {}/{}", ata.getId(), ata.getNumero(), ata.getAno());
-        return toResponseDTO(ata);
+        return toResponseDTO(savedOrUpdated(ata));
     }
+
     @Transactional
     public void deletar(Long id) {
         if (!ataRepository.existsById(id)) {
@@ -179,6 +175,10 @@ public class AtaService {
         ataSecretariaRepository.deleteByAtaId(id);
         ataRepository.deleteById(id);
         log.info("ATA deletada com sucesso. ID: {}", id);
+    }
+
+    private AtaRegistroPreco savedOrUpdated(AtaRegistroPreco ata) {
+        return ataRepository.save(ata);
     }
 
     // converte entidade para response
@@ -191,10 +191,10 @@ public class AtaService {
         dto.setAno(ata.getAno());
         dto.setDataInicio(ata.getDataInicio());
         dto.setDataFim(ata.getDataFim());
-        dto.setTipo(ata.getTipo().getTipoArp());
+        dto.setTipo(ata.getTipo() != null ? ata.getTipo().getTipoArp() : null);
         dto.setObjeto(ata.getObjeto());
         dto.setObservacao(ata.getObservacao());
-        dto.setSituacao(ata.getAtivo().getSituacao());
+        dto.setSituacao(ata.getAtivo() != null ? ata.getAtivo().getSituacao() : null);
         dto.setPortariaDesignacao(ata.getPortariaDesignacao());
         dto.setDataDesignacao(ata.getDataDesignacao());
 
@@ -220,11 +220,11 @@ public class AtaService {
         dto.setId(as.getSecretaria().getId());
         dto.setNome(as.getSecretaria().getNome());
         dto.setSigla(as.getSecretaria().getSigla());
-        dto.setSituacao(as.getAtivo().getSituacao());
+        dto.setSituacao(as.getAtivo() != null ? as.getAtivo().getSituacao() : null);
         return dto;
     }
 
-    // extrai equipe do contrato
+    // extrai equipes do contrato
     private List<EquipeContratoResponseDTO> extractEquipe(AtaRegistroPreco ata) {
         if (ata.getEquipe() == null || ata.getEquipe().isEmpty()) {
             return new ArrayList<>();
@@ -235,14 +235,51 @@ public class AtaService {
                 .collect(Collectors.toList());
     }
 
-    private EquipeContratoResponseDTO toEquipeResponseDTO(EquipeContrato membro) {
-        if (membro.getFuncao() == null || membro.getServidor() == null) {
+    private EquipeContratoResponseDTO toEquipeResponseDTO(EquipeContrato equipe) {
+        if (equipe == null) {
             return null;
         }
+
+        List<MembroEquipeResponseDTO> membrosDTO = new ArrayList<>();
+        if (equipe.getMembros() != null) {
+            membrosDTO = equipe.getMembros().stream()
+                    .map(this::toMembroResponseDTO)
+                    .collect(Collectors.toList());
+        }
+
         EquipeContratoResponseDTO dto = new EquipeContratoResponseDTO();
-        dto.setFuncao(membro.getFuncao().getNome());
-        dto.setServidor(membro.getServidor().getNome());
+        dto.setId(equipe.getId());
+        dto.setAtaId(equipe.getAta() != null ? equipe.getAta().getId() : null);
+        dto.setAtaNumero(equipe.getAta() != null ? equipe.getAta().getNumero() : null);
+        dto.setAtaAno(equipe.getAta() != null ? equipe.getAta().getAno() : null);
+        dto.setAtaObjeto(equipe.getAta() != null ? equipe.getAta().getObjeto() : null);
+        dto.setAtivoId(equipe.getAtivo() != null ? equipe.getAtivo().getId() : null);
+        dto.setSituacao(equipe.getAtivo() != null ? equipe.getAtivo().getSituacao() : null);
+        dto.setMembros(membrosDTO);
+
         return dto;
     }
 
+    private MembroEquipeResponseDTO toMembroResponseDTO(EquipeMembro membro) {
+        if (membro == null) return null;
+
+        MembroEquipeResponseDTO dto = new MembroEquipeResponseDTO();
+        dto.setId(membro.getId());
+
+        if (membro.getServidor() != null) {
+            dto.setServidorId(membro.getServidor().getId());
+            dto.setServidorNome(membro.getServidor().getNome());
+            dto.setServidorCargo(membro.getServidor().getCargo());
+            if (membro.getServidor().getMatricula() != null) {
+                dto.setServidorMatricula(String.valueOf(membro.getServidor().getMatricula()));
+            }
+        }
+
+        if (membro.getFuncao() != null) {
+            dto.setFuncaoId(membro.getFuncao().getId());
+            dto.setFuncaoNome(membro.getFuncao().getNome()); // ou getDescricao()
+        }
+
+        return dto;
+    }
 }

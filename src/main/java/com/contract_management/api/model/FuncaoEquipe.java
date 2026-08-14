@@ -23,14 +23,14 @@ public class FuncaoEquipe {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "nome", length = 50, nullable = false)
     private String nome;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "ativo_id", nullable = false)
+    @Builder.Default
+    @OneToMany(mappedBy = "funcao")
+    private List<EquipeMembro> membros = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "ativo_id")
     private Ativo ativo;
 
-    @OneToMany(mappedBy = "funcao")
-    @Builder.Default
-    private List<EquipeContrato> equipes = new ArrayList<>();
 }

@@ -1,16 +1,13 @@
 package com.contract_management.api.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "equipe_contrato")
@@ -30,16 +27,12 @@ public class EquipeContrato {
     private AtaRegistroPreco ata;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "servidor_id", nullable = false)
-    private Servidor servidor;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "funcao_id", nullable = false)
-    private FuncaoEquipe funcao;
-
-    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ativo_id", nullable = false)
     private Ativo ativo;
+
+    @Builder.Default
+    @OneToMany(mappedBy = "equipe", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<EquipeMembro> membros = new ArrayList<>();
 
     @CreationTimestamp
     @Column(name = "criado_em", updatable = false)

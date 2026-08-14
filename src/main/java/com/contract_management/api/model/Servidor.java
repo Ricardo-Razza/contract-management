@@ -53,7 +53,8 @@ public class Servidor {
     @Column(name = "atualizado_em")
     private LocalDateTime atualizadoEm;
 
-    @OneToMany(mappedBy = "servidor")
     @Builder.Default
-    private List<EquipeContrato> equipes = new ArrayList<>();
+    @OneToMany(mappedBy = "servidor")
+    private List<EquipeMembro> equipesMembro = new ArrayList<>();
+
 }
