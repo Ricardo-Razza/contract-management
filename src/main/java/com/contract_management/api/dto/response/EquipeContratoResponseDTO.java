@@ -19,6 +19,10 @@ public class EquipeContratoResponseDTO {
     private Integer ataNumero;
     private Integer ataAno;
     private String ataObjeto;
+    private Long contratoId;
+    private Integer contratoNumero;
+    private Integer contratoAno;
+    private String contratoObjeto;
     private Long ativoId;
     private String situacao;
     private List<MembroEquipeResponseDTO> membros;

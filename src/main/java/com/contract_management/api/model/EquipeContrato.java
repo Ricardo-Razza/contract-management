@@ -23,8 +23,12 @@ public class EquipeContrato {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ata_id", nullable = false)
+    @JoinColumn(name = "ata_id")
     private AtaRegistroPreco ata;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "contrato_id")
+    private Contrato contrato;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ativo_id", nullable = false)
