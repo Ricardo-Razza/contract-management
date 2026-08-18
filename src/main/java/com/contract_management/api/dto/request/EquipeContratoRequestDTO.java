@@ -13,8 +13,9 @@ import java.util.List;
 @Builder
 public class EquipeContratoRequestDTO {
 
-    @NotNull(message = "A Ata é obrigatória")
     private Long ataId;
+
+    private Long contratoId;
 
     @NotNull(message = "O status de ativo é obrigatório")
     private Long ativoId;
