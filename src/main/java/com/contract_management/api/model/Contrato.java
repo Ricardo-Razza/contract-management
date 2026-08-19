@@ -48,10 +48,10 @@ public class Contrato {
     @Column(name = "nome_contratado", length = 255, nullable = false)
     private String nomeContratado;
 
-    @Column(name = "portaria_designacao", length = 100, nullable = false)
+    @Column(name = "portaria_designacao", length = 100)
     private String portariaDesignacao;
 
-    @Column(name = "data_designacao", nullable = false)
+    @Column(name = "data_designacao")
     private LocalDate dataDesignacao;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -73,4 +73,7 @@ public class Contrato {
     @OneToMany(mappedBy = "contrato", cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default
     private List<EquipeContrato> equipe = new ArrayList<>();
+
+    @Column(name = "observacao")
+    private String observacao;
 }

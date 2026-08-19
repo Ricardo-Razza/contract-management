@@ -36,14 +36,18 @@ public class AtaService {
 
     @Transactional(readOnly = true)
     public List<AtaResponseDTO> listarTodos() {
-        return ataRepository.findAll().stream()
+        List<AtaRegistroPreco> atas = ataRepository.findAllComSecretarias();
+        log.debug("=== DEBUG: {} ATAs carregadas do banco ===", atas.size());
+        atas.forEach(a -> log.debug("ATA id={} numero={}/{} tem {} secretaria(s)",
+                a.getId(), a.getNumero(), a.getAno(), a.getSecretarias().size()));
+        return atas.stream()
                 .map(this::toResponseDTO)
                 .collect(Collectors.toList());
     }
 
     @Transactional(readOnly = true)
     public AtaResponseDTO buscarPorId(Long id) {
-        AtaRegistroPreco ata = ataRepository.findById(id)
+        AtaRegistroPreco ata = ataRepository.findComSecretariasById(id)
                 .orElseThrow(() -> new EntityNotFoundException("ATA", id));
         return toResponseDTO(ata);
     }
@@ -99,8 +103,11 @@ public class AtaService {
             }
         }
 
+        // Recarrega do banco para que as secretarias recém salvas sejam incluídas no DTO
+        AtaRegistroPreco reloaded = ataRepository.findComSecretariasById(saved.getId())
+                .orElse(saved);
         log.info("ATA criada com sucesso. ID: {}, Número: {}/{}", saved.getId(), saved.getNumero(), saved.getAno());
-        return toResponseDTO(saved);
+        return toResponseDTO(reloaded);
     }
 
     @Transactional
@@ -163,8 +170,12 @@ public class AtaService {
             }
         }
 
+        AtaRegistroPreco updated = savedOrUpdated(ata);
+        // Recarrega do banco para que as secretarias recém salvas sejam incluídas no DTO
+        AtaRegistroPreco reloaded = ataRepository.findComSecretariasById(updated.getId())
+                .orElse(updated);
         log.info("ATA atualizada com sucesso. ID: {}, Número: {}/{}", ata.getId(), ata.getNumero(), ata.getAno());
-        return toResponseDTO(savedOrUpdated(ata));
+        return toResponseDTO(reloaded);
     }
 
     @Transactional
