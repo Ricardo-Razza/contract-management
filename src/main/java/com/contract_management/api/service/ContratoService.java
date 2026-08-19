@@ -73,6 +73,7 @@ public class ContratoService {
                 .portariaDesignacao(dto.getPortariaDesignacao())
                 .dataDesignacao(dto.getDataDesignacao())
                 .ativo(ativo)
+                .observacao(dto.getObservacao())
                 .build();
 
         Contrato saved = contratoRepository.save(contrato);
@@ -110,6 +111,7 @@ public class ContratoService {
         contrato.setNomeContratado(dto.getNomeContratado());
         contrato.setPortariaDesignacao(dto.getPortariaDesignacao());
         contrato.setDataDesignacao(dto.getDataDesignacao());
+        contrato.setObservacao(dto.getObservacao());
         contrato.setAtivo(ativo);
 
         List<ContratoSecretaria> antigas = contratoSecretariaRepository.findByContratoId(id);

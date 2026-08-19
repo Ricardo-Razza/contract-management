@@ -21,4 +21,5 @@ public class ContratoResponseDTO {
     private String situacao;
     private List<SecretariaResponseDTO> secretarias;
     private List<EquipeContratoResponseDTO> equipe;
+    private String observacao;
 }

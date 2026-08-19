@@ -44,4 +44,6 @@ public class ContratoRequestDTO {
     private Long ativoId;
 
     private List<Long> secretariasIds;
+
+    private String observacao;
 }
