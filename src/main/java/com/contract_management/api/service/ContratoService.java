@@ -174,6 +174,7 @@ public class ContratoService {
         dto.setPortariaDesignacao(contrato.getPortariaDesignacao());
         dto.setDataDesignacao(contrato.getDataDesignacao());
         dto.setSituacao(contrato.getAtivo() != null ? contrato.getAtivo().getSituacao() : null);
+        dto.setObservacao(contrato.getObservacao());
         dto.setSecretarias(mapSecretarias(contratoSecretariaRepository.findByContratoId(contrato.getId())));
         dto.setEquipe(extractEquipe(contrato));
         return dto;
