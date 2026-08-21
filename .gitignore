@@ -3,6 +3,11 @@ HELP.md
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+# Environment Variables
+.env
+.env.*
+!.env.example
+
 ### STS ###
 .apt_generated
 .classpath
