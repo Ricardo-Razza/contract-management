@@ -1,0 +1,83 @@
+TOTAL linhas: 314
+ÚNICOS (string): 293
+
+=== DUPLICADOS EXATOS (mesma string repetida na lista) ===
+3x | João Vitor Garcia
+2x | Aletéia da Rosa Homem
+2x | Luciane de Jesus Gonçalves
+2x | Aurélio Dias de Oliveira
+2x | André da Cunha
+2x | Mônica da Silva
+2x | Nélida Lilian Pereira
+2x | Pâmela Tais Antoni
+2x | Angélica Nascimento da Silva
+2x | André Luis Carlos
+2x | Mário Guilherme Pereira Azambuja
+2x | Eduardo de Souza Gonçalves
+2x | Jéssica Port do Prado
+2x | José Vilmar Pereira de Fraga
+2x | Maurício Nunes Marques
+2x | José Fernando Vargas dos Santos
+2x | João Vitor de Fraga Gomes
+2x | Jéssica da Hilario da Silva
+2x | Ariélla Machado de Vargas
+2x | Déborah Evangelista
+
+=== MESMO NOME NORMALIZADO (acento/caixa/espaços) ===
+3x | João Vitor Garcia
+2x | Flávia da Costa Dias  ||  Flavia da Costa Dias
+2x | Moisés da Silva Pacheco  ||  Moises da Silva Pacheco
+2x | Márcio Rousselet Sardá  ||  Marcio Rousselet Sarda
+2x | Natália Bernardo Nunes  ||  Natalia Bernardo Nunes
+2x | Aletéia da Rosa Homem
+2x | Luciane de Jesus Gonçalves
+2x | Aurélio Dias de Oliveira
+2x | André da Cunha
+2x | Mônica da Silva
+2x | Nélida Lilian Pereira
+2x | Pâmela Tais Antoni
+2x | Angélica Nascimento da Silva
+2x | André Luis Carlos
+2x | Mário Guilherme Pereira Azambuja
+2x | Eduardo de Souza Gonçalves
+2x | Jéssica Port do Prado
+2x | José Vilmar Pereira de Fraga
+2x | Maurício Nunes Marques
+2x | José Fernando Vargas dos Santos
+2x | João Vitor de Fraga Gomes
+2x | Jéssica da Hilario da Silva
+2x | Ariélla Machado de Vargas
+2x | Déborah Evangelista
+
+=== PROVÁVEIS MESMA PESSOA (grafias diferentes) ===
+[0.95] um contém o outro
+  - Mauro Gustavo Martins Pinto
+  - Mauro Gustavo Martins
+
+[0.85] mesmo primeiro + sobrenome parecido
+  - Gabriela Bach Silva
+  - Gabriela Bach da Silva
+
+[0.85] mesmo primeiro + sobrenome parecido
+  - Jordana Groth Mingure
+  - Jordana Groth Mingurre
+
+[0.85] mesmo primeiro + sobrenome parecido
+  - Jordano Smolarck dos Santos
+  - Jordano Smorlarck Dos Santos
+
+[0.85] mesmo primeiro + sobrenome parecido
+  - Marcos Pivato de Andrade
+  - Marcos Pivatto de Andrade
+
+[0.85] mesmo primeiro + sobrenome parecido
+  - Maria Elisa Menezes Silva
+  - Maria Inez Malheiros da Silva
+
+[0.85] mesmo primeiro + sobrenome parecido
+  - Talis Ramom Machado Pereira
+  - Talis Ramon Machado Pereira
+
+[0.75] distância baixa
+  - Sabrina Ramos Cândido
+  - Sabrina Ramos Cardoso

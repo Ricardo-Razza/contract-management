@@ -1,0 +1,135 @@
+{
+  "contratos": 253,
+  "links": 258,
+  "equipes": 250,
+  "membros": 1448,
+  "servidoresNovos": 20,
+  "servidoresReutilizados": 213,
+  "novos": [
+    {
+      "id": 342,
+      "nome": "Aletéia da Rosa Homem",
+      "email": "a.homem2@imbu.gov.br",
+      "matricula": 100142
+    },
+    {
+      "id": 343,
+      "nome": "Luciane de Jesus Gonçalves",
+      "email": "l.goncalves2@imbu.gov.br",
+      "matricula": 100143
+    },
+    {
+      "id": 344,
+      "nome": "Aurélio Dias de Oliveira",
+      "email": "a.oliveira2@imbu.gov.br",
+      "matricula": 100144
+    },
+    {
+      "id": 345,
+      "nome": "João Vitor Garcia",
+      "email": "j.garcia3@imbu.gov.br",
+      "matricula": 100145
+    },
+    {
+      "id": 346,
+      "nome": "André da Cunha",
+      "email": "a.cunha2@imbu.gov.br",
+      "matricula": 100146
+    },
+    {
+      "id": 347,
+      "nome": "Mônica da Silva",
+      "email": "m.silva5@imbu.gov.br",
+      "matricula": 100147
+    },
+    {
+      "id": 348,
+      "nome": "Nélida Lilian Pereira",
+      "email": "n.pereira2@imbu.gov.br",
+      "matricula": 100148
+    },
+    {
+      "id": 349,
+      "nome": "Pâmela Tais Antoni",
+      "email": "p.antoni2@imbu.gov.br",
+      "matricula": 100149
+    },
+    {
+      "id": 350,
+      "nome": "Angélica Nascimento da Silva",
+      "email": "a.silva5@imbu.gov.br",
+      "matricula": 100150
+    },
+    {
+      "id": 351,
+      "nome": "André Luis Carlos",
+      "email": "a.carlos2@imbu.gov.br",
+      "matricula": 100151
+    },
+    {
+      "id": 352,
+      "nome": "Mário Guilherme Pereira Azambuja",
+      "email": "m.azambuja2@imbu.gov.br",
+      "matricula": 100152
+    },
+    {
+      "id": 353,
+      "nome": "Eduardo de Souza Gonçalves",
+      "email": "e.goncalves2@imbu.gov.br",
+      "matricula": 100153
+    },
+    {
+      "id": 354,
+      "nome": "Jéssica Port do Prado",
+      "email": "j.prado2@imbu.gov.br",
+      "matricula": 100154
+    },
+    {
+      "id": 355,
+      "nome": "José Vilmar Pereira de Fraga",
+      "email": "j.fraga2@imbu.gov.br",
+      "matricula": 100155
+    },
+    {
+      "id": 356,
+      "nome": "Maurício Nunes Marques",
+      "email": "m.marques2@imbu.gov.br",
+      "matricula": 100156
+    },
+    {
+      "id": 357,
+      "nome": "José Fernando Vargas dos Santos",
+      "email": "j.santos3@imbu.gov.br",
+      "matricula": 100157
+    },
+    {
+      "id": 358,
+      "nome": "João Vitor de Fraga Gomes",
+      "email": "j.gomes2@imbu.gov.br",
+      "matricula": 100158
+    },
+    {
+      "id": 359,
+      "nome": "Jéssica da Hilario da Silva",
+      "email": "j.silva3@imbu.gov.br",
+      "matricula": 100159
+    },
+    {
+      "id": 360,
+      "nome": "Ariélla Machado de Vargas",
+      "email": "a.vargas2@imbu.gov.br",
+      "matricula": 100160
+    },
+    {
+      "id": 361,
+      "nome": "Déborah Evangelista",
+      "email": "d.evangelista2@imbu.gov.br",
+      "matricula": 100161
+    }
+  ],
+  "warnings": [
+    "sem equipe parseada contrato 112/2022",
+    "sem equipe parseada contrato 132/2023",
+    "sem equipe parseada contrato 17/2025"
+  ]
+}
