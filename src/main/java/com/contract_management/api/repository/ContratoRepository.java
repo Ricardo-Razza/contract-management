@@ -21,12 +21,11 @@ public interface ContratoRepository extends JpaRepository<Contrato, Long> {
 
 
     @Query("""
-    SELECT DISTINCT c FROM Contrato c
-    LEFT JOIN FETCH c.equipe eq
-    WHERE c.dataFim = :data
-      AND c.ativo.situacao = 'ATIVO'
-    """)
-    List<Contrato> findByDataFimComEquipe(@Param("data") LocalDate data);
-
+        SELECT c FROM Contrato c
+        WHERE c.dataFim = :data
+          AND c.ativo.situacao = 'ATIVO'
+        """)
+    List<Contrato> findByDataFim(@Param("data") LocalDate data);
+    
     // Alternativa via Derived Query Method (sem precisar da anotação @Query)
     List<Contrato> findByDataFimAndAtivoSituacao(LocalDate dataFim, String situacao);}
