@@ -7,13 +7,20 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface NotificacaoVencimentoEnviadaRepository extends JpaRepository<NotificacaoVencimentoEnviada, Long> {
+public interface NotificacaoVencimentoEnviadaRepository
+        extends JpaRepository<NotificacaoVencimentoEnviada, Long> {
 
     @Query("""
-        SELECT n.contrato.id FROM NotificacaoVencimentoEnviada n
-        WHERE n.contrato.id IN :contratoIds
-          AND n.diasAlerta = :diasAlerta
-        """)
+           SELECT n.contrato.id FROM NotificacaoVencimentoEnviada n
+           WHERE n.contrato.id IN :contratoIds AND n.diasAlerta = :diasAlerta
+           """)
     List<Long> findContratoIdsJaNotificados(@Param("contratoIds") List<Long> contratoIds,
-                                            @Param("diasAlerta") Integer diasAlerta);
+                                            @Param("diasAlerta") int diasAlerta);
+
+    @Query("""
+           SELECT n.ata.id FROM NotificacaoVencimentoEnviada n
+           WHERE n.ata.id IN :ataIds AND n.diasAlerta = :diasAlerta
+           """)
+    List<Long> findAtaIdsJaNotificados(@Param("ataIds") List<Long> ataIds,
+                                       @Param("diasAlerta") int diasAlerta);
 }

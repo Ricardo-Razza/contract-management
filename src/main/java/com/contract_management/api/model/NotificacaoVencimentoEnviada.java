@@ -10,10 +10,16 @@ import java.time.LocalDateTime;
 @Entity
 @Table(
         name = "notificacao_vencimento_enviada",
-        uniqueConstraints = @UniqueConstraint(
-                name = "uk_notificacao_contrato_dias_datafim",
-                columnNames = {"contrato_id", "dias_alerta", "data_fim_referencia"}
-        )
+        uniqueConstraints = {
+                @UniqueConstraint(
+                        name = "uk_notificacao_contrato_dias_datafim",
+                        columnNames = {"contrato_id", "dias_alerta", "data_fim_referencia"}
+                ),
+                @UniqueConstraint(
+                        name = "uk_notificacao_ata_dias_datafim",
+                        columnNames = {"ata_id", "dias_alerta", "data_fim_referencia"}
+                )
+        }
 )
 @Getter
 @Setter
@@ -27,8 +33,12 @@ public class NotificacaoVencimentoEnviada {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "contrato_id", nullable = false)
+    @JoinColumn(name = "contrato_id", nullable = true)
     private Contrato contrato;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ata_id", nullable = true)
+    private AtaRegistroPreco ata;
 
     @Column(name = "dias_alerta", nullable = false)
     private Integer diasAlerta;

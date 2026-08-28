@@ -20,4 +20,12 @@ public interface EquipeContratoRepository extends JpaRepository<EquipeContrato, 
         WHERE eq.contrato.id IN :contratoIds
         """)
     List<EquipeContrato> findByContratoIdInComMembros(@Param("contratoIds") List<Long> contratoIds);
+
+    @Query("""
+           SELECT DISTINCT ea FROM EquipeContrato ea
+           JOIN FETCH ea.membros m
+           JOIN FETCH m.servidor
+           WHERE ea.ata.id IN :ataIds
+           """)
+    List<EquipeContrato> findByAtaIdInComMembros(@Param("ataIds") List<Long> ataIds);
 }

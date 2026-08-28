@@ -16,6 +16,8 @@ public interface AtaRepository extends JpaRepository<AtaRegistroPreco, Long> {
     Optional<AtaRegistroPreco> findByNumeroAndAno(Integer numero, Integer ano);
     List<AtaRegistroPreco> findByAtivoId(Long ativoId);
     List<AtaRegistroPreco> findByDataFimBefore(LocalDate data);
+    List<AtaRegistroPreco> findByDataFim(LocalDate dataFim);
+
 
     /**
      * Carrega todas as ATAs junto com as secretarias vinculadas e seus dados (JOIN FETCH completo).
