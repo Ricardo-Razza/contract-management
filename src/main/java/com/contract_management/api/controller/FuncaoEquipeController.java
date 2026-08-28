@@ -1,7 +1,6 @@
 package com.contract_management.api.controller;
 
 import com.contract_management.api.dto.response.FuncaoEquipeResponseDTO;
-import com.contract_management.api.model.FuncaoEquipe;
 import com.contract_management.api.service.FuncaoEquipeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
